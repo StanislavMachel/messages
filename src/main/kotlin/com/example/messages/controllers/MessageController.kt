@@ -6,8 +6,10 @@ import com.example.messages.dtos.PostMessageDto
 import com.example.messages.services.MessageService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 
-@RequestMapping("/message")
+@CrossOrigin("http://localhost:4200")
+@RequestMapping("/api/messages")
 @RestController
 class MessageController(private val messageService: MessageService) {
 
@@ -22,7 +24,7 @@ class MessageController(private val messageService: MessageService) {
     }
 
     @PostMapping
-    fun create(@RequestBody postMessageDto: PostMessageDto): ResponseEntity<GetMessageDto> {
+    fun create(@Valid @RequestBody postMessageDto: PostMessageDto): ResponseEntity<GetMessageDto> {
         return ResponseEntity.ok(messageService.create(postMessageDto))
     }
 }

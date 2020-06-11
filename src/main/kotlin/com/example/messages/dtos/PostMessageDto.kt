@@ -1,3 +1,5 @@
 package com.example.messages.dtos
 
-data class PostMessageDto(var content: String)
+import javax.validation.constraints.NotBlank
+
+data class PostMessageDto(@field:NotBlank var content: String)
